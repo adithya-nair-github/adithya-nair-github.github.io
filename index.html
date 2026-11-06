@@ -1,0 +1,444 @@
+<title>Adithya Nair</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Adithya Nair: GTM, customer success and account management. Started selling at 18. Still building.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=Caveat:wght@600;700&display=swap">
+<style>
+/* Layout: a career played as levels. Cobalt "game screen" bands open and close the page; white level cards in between; a sticky pill nav to jump levels. Deliberately single bright theme. */
+:root{
+  color-scheme:light;
+  --paper:#FFFFFF;
+  --mist:#EEF1FF;
+  --ink:#0E1330;
+  --ink-2:#4A5070;
+  --cobalt:#2238F0;
+  --cobalt-deep:#1426C4;
+  --sun:#FFD23F;
+  --line:#DCE1F5;
+  --on-cobalt:#FFFFFF;
+  --on-cobalt-2:#C9D0FF;
+  --font-display:"Archivo", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --font-serif:"Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-hand:"Caveat", "Segoe Print", "Bradley Hand", cursive;
+  --font-body:"Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --s-1:.8125rem; --s0:1rem; --s1:1.1875rem; --s2:1.5rem; --s3:clamp(2rem,5.5vw,3.1rem); --s4:clamp(2.6rem,8.4vw,5.6rem);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:var(--s0); line-height:1.6; -webkit-font-smoothing:antialiased}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top, 0px); z-index:30; background:var(--cobalt)}
+a{color:inherit}
+a:focus-visible, button:focus-visible{outline:3px solid var(--sun); outline-offset:3px; border-radius:8px}
+h1,h2,h3{margin:0; text-wrap:balance; font-family:var(--font-display)}
+p{margin:0}
+em.serif{font-family:var(--font-serif); font-style:italic; font-weight:400; letter-spacing:0}
+.hand{font-family:var(--font-hand); font-weight:700}
+.inner{max-width:1080px; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.label{font-family:var(--font-display); font-stretch:115%; font-weight:700; font-size:.75rem; letter-spacing:.14em; text-transform:uppercase}
+
+/* Sticky pill nav */
+.navwrap{position:sticky; top:env(safe-area-inset-top, 0px); z-index:20; padding-block:12px; background:var(--cobalt)}
+.pill{display:flex; align-items:center; gap:6px; flex-wrap:wrap; justify-content:space-between; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.28); border-radius:999px; padding:6px 6px 6px 18px; color:var(--on-cobalt)}
+.pill .who{font-family:var(--font-display); font-stretch:120%; font-weight:900; font-size:.95rem; letter-spacing:.04em; text-transform:uppercase}
+.pill nav{display:flex; gap:4px; flex-wrap:wrap}
+.pill nav a{text-decoration:none; font-weight:600; font-size:.875rem; padding:7px 12px; border-radius:999px; color:var(--on-cobalt-2)}
+.pill nav a:hover{color:var(--on-cobalt); background:rgba(255,255,255,.12)}
+.pill nav a.hire{background:var(--sun); color:var(--ink)}
+
+/* Hero */
+.hero{background:var(--cobalt); color:var(--on-cobalt); padding-block:40px 64px}
+.hero .inner{display:grid; gap:28px}
+.hero .label{color:var(--on-cobalt-2)}
+.hero h1{font-size:var(--s4); font-weight:900; font-stretch:112%; line-height:.95; letter-spacing:-.015em; max-width:15ch}
+.hero h1 em.serif{font-size:1.08em; color:var(--sun)}
+.redacted{display:inline-block; background:var(--on-cobalt); color:transparent; border-radius:6px; padding:0 .14em; min-width:3.8ch; transition:background .5s ease, color .5s ease; font-stretch:100%}
+.redacted.shown{background:transparent; color:var(--sun)}
+.reveal{display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px}
+.btn{font:inherit; font-weight:700; font-size:.9375rem; border:0; border-radius:999px; padding:12px 20px; cursor:pointer; text-decoration:none; display:inline-flex; gap:8px; align-items:center}
+.btn.sun{background:var(--sun); color:var(--ink)}
+.btn.line{background:transparent; color:var(--on-cobalt); box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6)}
+.btn.ink{background:var(--ink); color:var(--paper)}
+.btn.ghost{background:transparent; color:var(--ink); box-shadow:inset 0 0 0 1.5px var(--line)}
+.reveal .hand{font-size:1.6rem; color:var(--sun); line-height:1}
+.stats{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:12px}
+.stat{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); border-radius:16px; padding:16px; display:grid; gap:4px}
+.stat b{font-family:var(--font-display); font-weight:900; font-stretch:110%; font-size:var(--s2); line-height:1.05; font-variant-numeric:tabular-nums}
+.stat span{color:var(--on-cobalt-2); font-size:var(--s-1); line-height:1.35}
+.mapbox{position:relative; border-radius:20px; overflow:hidden; background:var(--cobalt-deep); border:1px solid rgba(255,255,255,.18)}
+.mapbox canvas{display:block; width:100%; max-width:100%; aspect-ratio:2.4 / 1; height:auto}
+.mapbox .hand{position:absolute; left:18px; bottom:12px; font-size:1.45rem; color:var(--on-cobalt)}
+
+/* XP track */
+.track{padding-block:56px 8px}
+.track ol{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:12px; counter-reset:lv}
+.track li a{display:grid; gap:6px; text-decoration:none; padding:16px; border-radius:16px; background:var(--mist); height:100%}
+.track li a:hover{background:#E2E7FF}
+.track .bar{height:8px; border-radius:99px; background:var(--line); overflow:hidden}
+.track .bar i{display:block; height:100%; background:var(--cobalt); border-radius:99px}
+.track li:last-child .bar i{background:var(--sun)}
+.track b{font-family:var(--font-display); font-weight:800; font-stretch:110%; font-size:1.05rem}
+.track span{color:var(--ink-2); font-size:var(--s-1)}
+
+/* Levels */
+.level{padding-block:72px 8px; scroll-margin-top:84px}
+.level .inner{display:grid; gap:28px}
+.lvhead{display:grid; gap:10px}
+.lvtag{display:inline-flex; align-items:center; gap:10px; width:max-content}
+.lvtag .num{background:var(--cobalt); color:var(--on-cobalt); font-family:var(--font-display); font-weight:900; font-stretch:115%; font-size:.8rem; letter-spacing:.1em; padding:5px 10px; border-radius:6px}
+.lvtag .when{color:var(--ink-2); font-size:var(--s-1); font-weight:600}
+.lvhead h2{font-size:var(--s3); font-weight:900; font-stretch:112%; line-height:1; letter-spacing:-.01em}
+.lvhead h2 em.serif{color:var(--cobalt)}
+.lvhead p{color:var(--ink-2); font-size:var(--s1); max-width:60ch}
+.cols{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:20px; align-items:start}
+.card{background:var(--paper); border:1.5px solid var(--line); border-radius:20px; padding:24px; display:grid; gap:14px; align-content:start; min-width:0}
+.card.tint{background:var(--mist); border-color:transparent}
+.card h3{font-size:1.15rem; font-weight:800; font-stretch:105%}
+.list{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+.list li{display:grid; grid-template-columns:18px minmax(0,1fr); gap:10px; align-items:start}
+.list li::before{content:""; width:10px; height:10px; margin-top:.5em; border-radius:3px; background:var(--cobalt)}
+.lesson{display:grid; gap:2px}
+.lesson .hand{font-size:1.5rem; color:var(--cobalt); line-height:1.1}
+.lesson q{font-family:var(--font-serif); font-style:italic; font-size:var(--s2); line-height:1.2; quotes:none}
+
+/* Stat tiles (operator) */
+.tiles{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px}
+.tile{background:var(--mist); border-radius:18px; padding:18px; display:grid; gap:6px; align-content:start}
+.tile .big{font-family:var(--font-display); font-weight:900; font-stretch:108%; font-size:clamp(1.5rem,3.6vw,2rem); line-height:1; font-variant-numeric:tabular-nums; color:var(--ink)}
+.tile .big small{font-size:.55em; color:var(--ink-2); font-weight:700}
+.tile .big .to{color:var(--cobalt)}
+.tile span{color:var(--ink-2); font-size:.875rem; line-height:1.4}
+
+/* Pipeline (builder) */
+.pipe{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:12px; counter-reset:step; list-style:none; margin:0; padding:0}
+.pipe > li{position:relative; background:var(--paper); border:1.5px solid var(--line); border-radius:18px; padding:18px; display:grid; gap:8px; align-content:start; counter-increment:step}
+.pipe > li::before{content:"Step " counter(step); font-family:var(--font-display); font-stretch:115%; font-weight:800; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--cobalt)}
+.pipe > li:not(:last-child)::after{content:"→"; position:absolute; right:-12px; top:50%; transform:translate(50%,-50%); width:24px; height:24px; border-radius:50%; background:var(--cobalt); color:var(--on-cobalt); display:grid; place-items:center; font-size:.8rem; z-index:1}
+.pipe > li:last-child{background:var(--sun); border-color:var(--sun)}
+.pipe > li:last-child::before{color:var(--ink)}
+.pipe h3{font-size:1.05rem; font-weight:800}
+.pipe p{font-size:.9rem; color:var(--ink-2); line-height:1.45}
+.pipe > li:last-child p{color:var(--ink)}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin:0; padding:0; list-style:none}
+.chips li{font-size:.75rem; font-weight:600; background:var(--mist); border-radius:999px; padding:4px 10px}
+.result{display:grid; grid-template-columns:auto minmax(0,1fr); gap:6px 20px; align-items:center; background:var(--ink); color:var(--paper); border-radius:20px; padding:22px 24px}
+.result .x{font-family:var(--font-display); font-weight:900; font-stretch:115%; font-size:clamp(2.8rem,8vw,4.2rem); line-height:.9; color:var(--sun)}
+.result p{color:#D6DAEE; font-size:.95rem}
+.result strong{color:var(--paper)}
+
+/* Hustle receipts */
+.receipts{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px}
+.receipt{border:1.5px dashed var(--ink-2); border-radius:16px; padding:18px; display:grid; gap:8px; align-content:start}
+.receipt .hand{font-size:1.45rem; color:var(--cobalt); line-height:1.1}
+.receipt p{font-size:.95rem}
+
+/* Kit */
+.kit{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px}
+.kit div{background:var(--mist); border-radius:16px; padding:18px; display:grid; gap:6px; align-content:start}
+.kit p{font-size:.92rem; color:var(--ink)}
+.kit .label{color:var(--cobalt)}
+
+/* Final */
+.final{background:var(--cobalt); color:var(--on-cobalt); margin-top:88px; padding-block:64px 56px; scroll-margin-top:84px}
+.final .inner{display:grid; gap:22px}
+.final .label{color:var(--on-cobalt-2)}
+.final h2{font-size:var(--s4); font-weight:900; font-stretch:112%; line-height:.95; max-width:14ch}
+.final h2 em.serif{color:var(--sun)}
+.final p{color:var(--on-cobalt-2); max-width:56ch; font-size:var(--s1)}
+.roles{display:flex; flex-wrap:wrap; gap:8px; list-style:none; margin:0; padding:0}
+.roles li{border:1.5px solid rgba(255,255,255,.5); border-radius:999px; padding:6px 14px; font-weight:700; font-size:.875rem}
+.contact{display:flex; flex-wrap:wrap; gap:12px; align-items:center}
+.email{font-weight:700; font-size:1.05rem; user-select:all; background:rgba(255,255,255,.12); padding:10px 16px; border-radius:999px}
+.copied{color:var(--sun); font-weight:700; font-size:.9rem; min-width:6ch}
+.final .hand{font-size:1.6rem; color:var(--sun)}
+footer{background:var(--cobalt); color:var(--on-cobalt-2); font-size:var(--s-1); padding-block:0 32px}
+
+@media (max-width:900px){
+  .stats{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .pipe{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .pipe > li:nth-child(2)::after{display:none}
+  .receipts, .kit{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:720px){
+  .cols{grid-template-columns:minmax(0,1fr)}
+  .track ol{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .pill nav a:not(.hire){display:none}
+  .mapbox canvas{aspect-ratio:1.6 / 1}
+}
+@media (max-width:480px){
+  .pipe{grid-template-columns:minmax(0,1fr)}
+  .pipe > li::after{display:none}
+  .tiles{grid-template-columns:minmax(0,1fr)}
+  .result{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){ .redacted{transition:none} }
+
+/* Blue page with soft grey cards */
+:root{ --page:#1626B8; --card:#E9ECF3; --card-2:#DCE1EC; --card-3:#CFD5E3; --on-page:#FFFFFF; --on-page-2:#C9D0FF }
+body{background:var(--page); color:var(--on-page)}
+.track, .level{color:var(--on-page)}
+.lvhead p, .lvtag .when{color:var(--on-page-2)}
+.lvhead h2 em.serif{color:var(--sun)}
+.lvtag .num{background:var(--sun); color:var(--ink)}
+.level .lvhead > .label{color:var(--sun) !important}
+.card{background:var(--card); border-color:transparent; color:var(--ink)}
+.card.tint{background:var(--card-2)}
+.tile{background:var(--card); color:var(--ink)}
+.track li a{background:var(--card); color:var(--ink)}
+.track li a:hover{background:var(--card-2)}
+.track .bar{background:var(--card-3)}
+.pipe > li{background:var(--card-2); border-color:transparent}
+.pipe > li:last-child{background:var(--sun)}
+.chips li{background:var(--card)}
+.receipt{border-color:rgba(255,255,255,.55); color:var(--on-page)}
+.receipt .hand{color:var(--sun)}
+.kit div{background:var(--card); color:var(--ink)}
+.final{background:var(--cobalt)}
+</style>
+
+<div class="navwrap">
+  <div class="inner">
+    <div class="pill">
+      <span class="who">Adithya Nair</span>
+      <nav aria-label="Levels">
+        <a href="#lv1">Lv 1 · Trader</a>
+        <a href="#lv2">Lv 2 · Operator</a>
+        <a href="#lv3">Lv 3 · Builder</a>
+        <a href="#lv4" class="hire">Lv 4 · Your team</a>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="inner">
+    <p class="label">GTM · Customer Success · Account Management</p>
+    <h1>I started selling at <em class="serif">18.</em> My first big deal was <span class="redacted" id="redacted" aria-label="hidden amount">$8,000+</span></h1>
+    <div class="reveal">
+      <button class="btn sun" id="reveal" type="button" aria-controls="redacted" aria-expanded="false">Reveal the number</button>
+      <span class="hand" id="note">go on, click it</span>
+    </div>
+    <div class="stats" aria-label="Highlights">
+      <div class="stat"><b>6</b><span>countries I sold into at 18</span></div>
+      <div class="stat"><b>₹60→120 Cr</b><span>annual business, part of the team that doubled it</span></div>
+      <div class="stat"><b>3x</b><span>outbound reply rate from an engine I built</span></div>
+      <div class="stat"><b>6 months</b><span>from data entry to key accounts</span></div>
+    </div>
+    <figure class="mapbox" style="margin:0">
+      <canvas id="map" width="1100" height="460" role="img" aria-label="Map with lines from India to Australia, the United States, the United Kingdom, Canada, Denmark and Singapore"></canvas>
+      <span class="hand" aria-hidden="true">where my first customers were ↗</span>
+    </figure>
+  </div>
+</header>
+
+<section class="track" aria-label="Career levels">
+  <div class="inner">
+    <ol>
+      <li><a href="#lv1"><span class="label">Level 1</span><b>The trader</b><span>Age 18</span><span class="bar"><i style="width:100%"></i></span></a></li>
+      <li><a href="#lv2"><span class="label">Level 2</span><b>The operator</b><span>Apr 2025 – Jul 2026</span><span class="bar"><i style="width:100%"></i></span></a></li>
+      <li><a href="#lv3"><span class="label">Level 3</span><b>The builder</b><span>Jul 2026 – now</span><span class="bar"><i style="width:70%"></i></span></a></li>
+      <li><a href="#lv4"><span class="label">Level 4</span><b>Your team</b><span>Unlocking soon</span><span class="bar"><i style="width:12%"></i></span></a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="level" id="lv1" aria-labelledby="lv1h">
+  <div class="inner">
+    <div class="lvhead">
+      <span class="lvtag"><span class="num">LEVEL 1</span><span class="when">Age 18</span></span>
+      <h2 id="lv1h">The <em class="serif">trader</em></h2>
+      <p>No playbook to follow. Just an online game and a marketplace full of buyers I had to win over.</p>
+    </div>
+    <div class="cols">
+      <div class="card">
+        <h3>What I did</h3>
+        <ul class="list">
+          <li>Sold in-game items to customers in Australia, the US, the UK, Canada, Denmark and Singapore.</li>
+          <li>Built repeat business. Many of those customers kept coming back to me for years.</li>
+          <li>Closed a single deal worth over $8,000.</li>
+        </ul>
+      </div>
+      <div class="card tint lesson">
+        <span class="hand">what it taught me</span>
+        <q>Understand the customer before you sell.</q>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="level" id="lv2" aria-labelledby="lv2h">
+  <div class="inner">
+    <div class="lvhead">
+      <span class="lvtag"><span class="num">LEVEL 2</span><span class="when">Apr 2025 – Jul 2026</span></span>
+      <h2 id="lv2h">The <em class="serif">operator</em></h2>
+      <p>Karnataka Soaps &amp; Detergents Ltd., the makers of Mysore Sandal. I walked in doing data entry and moved to key accounts for pan-India e-commerce and quick commerce.</p>
+    </div>
+    <div class="cols">
+      <div class="tiles">
+        <div class="tile"><span class="big">₹60 <small>→</small> <span class="to">₹120 Cr</span></span><span>Annual business. Part of the team that doubled it.</span></div>
+        <div class="tile"><span class="big">72–75% <small>→</small> <span class="to">98%</span></span><span>Fill rate across our marketplace channels.</span></div>
+        <div class="tile"><span class="big">24 <small>+</small> 8</span><span>Distributors and e-commerce channels I coordinated.</span></div>
+        <div class="tile"><span class="big">6 <small>months</small></span><span>From data entry to key accounts.</span></div>
+      </div>
+      <div class="card tint">
+        <ul class="list">
+          <li>Introduced new SKUs on each platform.</li>
+          <li>The brand received a supply-chain award from Zepto during this period.</li>
+        </ul>
+        <div class="lesson">
+          <span class="hand">what it taught me</span>
+          <q>Growth is mostly operations done well.</q>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="level" id="lv3" aria-labelledby="lv3h">
+  <div class="inner">
+    <div class="lvhead">
+      <span class="lvtag"><span class="num">LEVEL 3</span><span class="when">Jul 2026 – now</span></span>
+      <h2 id="lv3h">The <em class="serif">builder</em></h2>
+      <p>IRIS RegTech Solutions. Founding SDR for the US market, selling IRIS CARBON, a disclosure-management platform, to controllers, CFOs and financial-reporting leaders. Nobody asked me to build an outreach engine. I built one anyway.</p>
+    </div>
+
+    <div class="card" style="gap:18px">
+      <h3>The signal-based outreach engine</h3>
+      <ol class="pipe">
+        <li>
+          <h3>Read the public record</h3>
+          <p>It pulls only from publicly available data.</p>
+          <ul class="chips"><li>Annual reports</li><li>Quarterly SEC filings</li><li>Call transcripts</li><li>News</li></ul>
+        </li>
+        <li>
+          <h3>Turn it into signals</h3>
+          <p>An agentic workflow reads that material and pulls out the buying signals worth acting on.</p>
+        </li>
+        <li>
+          <h3>Research the buyer</h3>
+          <p>It works out who at the company should hear about it, and what they care about right now.</p>
+        </li>
+        <li>
+          <h3>Draft the first email</h3>
+          <p>A personalised first email, built on the signal, ready for me to review and send.</p>
+        </li>
+      </ol>
+      <div class="result">
+        <span class="x">3x</span>
+        <p><strong>Reply rates tripled.</strong> Management approved it as a pilot, and I'm now developing the dashboard with them so the wider team can use it.</p>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div class="card">
+        <h3>Also on my own initiative</h3>
+        <ul class="list">
+          <li>Wrote the US go-to-market plan.</li>
+          <li>Defined the US LinkedIn outreach playbook.</li>
+          <li>Run the pipeline day to day in HubSpot.</li>
+        </ul>
+      </div>
+      <div class="card tint lesson">
+        <span class="hand">what it taught me</span>
+        <q>Build first, then ask permission.</q>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="level" aria-labelledby="hh">
+  <div class="inner">
+    <div class="lvhead">
+      <span class="label" style="color:var(--cobalt)">The pattern</span>
+      <h2 id="hh">What I do when <em class="serif">nobody's asking</em></h2>
+    </div>
+    <div class="receipts">
+      <div class="receipt"><span class="hand">age 18</span><p>Sold to customers across six countries, and kept them coming back for years.</p></div>
+      <div class="receipt"><span class="hand">month 6</span><p>Went from data entry to managing key accounts for a 100-year-old soap brand.</p></div>
+      <div class="receipt"><span class="hand">first months at IRIS</span><p>Built an outreach engine nobody asked for. It tripled replies and became a pilot.</p></div>
+    </div>
+    <div class="kit">
+      <div><span class="label">Go-to-market</span><p>GTM planning for a new market, intent-signal prospecting, outbound sequencing, LinkedIn playbooks</p></div>
+      <div><span class="label">Accounts &amp; channels</span><p>Key accounts, marketplace and quick-commerce operations, distributor coordination, SKU launches</p></div>
+      <div><span class="label">Systems</span><p>Agentic AI workflows, HubSpot, Amazon Ads and Amazon DSP certified</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="lv4" aria-labelledby="lv4h">
+  <div class="inner">
+    <p class="label">Level 4 · Unlocking soon</p>
+    <h2 id="lv4h">The next level is <em class="serif">your team.</em></h2>
+    <p>I'm looking for a team where I can own accounts or a channel and grow it. Based in India, open to Bangalore, remote and international roles. I already work US hours.</p>
+    <ul class="roles" aria-label="Roles I'm open to"><li>GTM &amp; Growth</li><li>Customer Success</li><li>Account Executive</li></ul>
+    <div class="contact">
+      <span class="email" id="email">nairadithya02@gmail.com</span>
+      <button class="btn sun" id="copy" type="button">Copy email</button>
+      <a class="btn line" href="https://www.linkedin.com/in/adithya-nair-0734281b8/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <span class="copied" id="copied" aria-live="polite"></span>
+    </div>
+    <span class="hand">player 2, press start.</span>
+  </div>
+</section>
+<footer><div class="inner">Adithya Nair · GTM, Customer Success and Account Management</div></footer>
+
+<script>
+(function(){
+  var r = document.getElementById("redacted"), b = document.getElementById("reveal"), note = document.getElementById("note");
+  b.addEventListener("click", function(){
+    var open = !r.classList.contains("shown");
+    r.classList.toggle("shown", open);
+    r.setAttribute("aria-label", open ? "$8,000+" : "hidden amount");
+    b.setAttribute("aria-expanded", String(open));
+    b.textContent = open ? "Hide it" : "Reveal the number";
+    note.textContent = open ? "one deal. at 18. imagine your pipeline." : "go on, click it";
+  });
+
+  var EMAIL = "nairadithya02@gmail.com", cb = document.getElementById("copy"), cm = document.getElementById("copied");
+  cb.addEventListener("click", function(){
+    function done(t){ cm.textContent = t; setTimeout(function(){ cm.textContent = ""; }, 2000); }
+    function fallback(){ try{ var el = document.getElementById("email"); var rg = document.createRange(); rg.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(rg); done("Selected, press Ctrl+C"); }catch(e){} }
+    try{ if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(EMAIL).then(function(){ done("Copied"); }, fallback); } else { fallback(); } }catch(e){ fallback(); }
+  });
+
+  var c = document.getElementById("map"), ctx = c.getContext("2d");
+  var SUN = "#FFD23F", WHITE = "#FFFFFF", SOFT = "#C9D0FF";
+  var LAT_TOP = 72, LAT_BOT = -46;
+  var home = {lat:20.6, lon:78.9};
+  var pts = [
+    {name:"Canada", lat:56.1, lon:-106.3},{name:"US", lat:39.5, lon:-98.4},{name:"UK", lat:54.0, lon:-2.0},
+    {name:"Denmark", lat:56.0, lon:10.0},{name:"Singapore", lat:1.35, lon:103.8},{name:"Australia", lat:-25.3, lon:133.8}
+  ];
+  var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function size(){ var rc = c.getBoundingClientRect(); W = Math.max(300, rc.width); H = Math.max(160, rc.height); c.width = Math.round(W*dpr); c.height = Math.round(H*dpr); ctx.setTransform(dpr,0,0,dpr,0,0); }
+  function proj(p){ var pad = 30; return [pad + (p.lon+180)/360*(W-pad*2), pad + (LAT_TOP-p.lat)/(LAT_TOP-LAT_BOT)*(H-pad*2)]; }
+  function ctrl(a,b){ var d = Math.hypot(b[0]-a[0], b[1]-a[1]); return [(a[0]+b[0])/2, (a[1]+b[1])/2 - d*0.3]; }
+  function bez(a,k,b,t){ var u = 1-t; return [u*u*a[0]+2*u*t*k[0]+t*t*b[0], u*u*a[1]+2*u*t*k[1]+t*t*b[1]]; }
+  function draw(t){
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = SOFT; ctx.globalAlpha = .22;
+    var st = W < 600 ? 14 : 18;
+    for(var y = st/2; y < H; y += st) for(var x = st/2; x < W; x += st) ctx.fillRect(x, y, 1.5, 1.5);
+    ctx.globalAlpha = 1;
+    var h = proj(home), fs = W < 600 ? 12 : 14;
+    pts.forEach(function(p,i){
+      var e = proj(p), k = ctrl(h,e);
+      ctx.strokeStyle = SUN; ctx.globalAlpha = .75; ctx.lineWidth = 1.8;
+      ctx.beginPath(); ctx.moveTo(h[0],h[1]); ctx.quadraticCurveTo(k[0],k[1],e[0],e[1]); ctx.stroke(); ctx.globalAlpha = 1;
+      if(t !== null){ var q = bez(h,k,e,((t/2600)+i/pts.length)%1); ctx.fillStyle = WHITE; ctx.beginPath(); ctx.arc(q[0],q[1],3,0,Math.PI*2); ctx.fill(); }
+      ctx.fillStyle = WHITE; ctx.beginPath(); ctx.arc(e[0],e[1],4,0,Math.PI*2); ctx.fill();
+      ctx.font = "700 " + fs + "px Archivo, Arial, sans-serif";
+      var tw = ctx.measureText(p.name).width, lx = Math.min(Math.max(e[0]+9, 6), W-tw-6), ly = e[1]-9; if(ly < 16) ly = e[1]+20;
+      ctx.fillText(p.name, lx, ly);
+    });
+    ctx.fillStyle = SUN; ctx.beginPath(); ctx.arc(h[0],h[1],7,0,Math.PI*2); ctx.fill();
+    ctx.globalAlpha = .3; ctx.beginPath(); ctx.arc(h[0],h[1],15,0,Math.PI*2); ctx.fill(); ctx.globalAlpha = 1;
+    ctx.font = "800 " + (fs+1) + "px Archivo, Arial, sans-serif"; ctx.textAlign = "right"; ctx.fillText("Me, India", h[0]-14, h[1]+26); ctx.textAlign = "left";
+  }
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function frame(ts){ draw(ts); if(!reduce) requestAnimationFrame(frame); }
+  size(); draw(null); if(!reduce) requestAnimationFrame(frame);
+  var rt; window.addEventListener("resize", function(){ clearTimeout(rt); rt = setTimeout(function(){ size(); draw(null); }, 120); });
+})();
+</script>
