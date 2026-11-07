@@ -281,10 +281,39 @@ body.building .engine.rise{opacity:1; filter:none; transform:none}
 @media (max-width:520px){
   .mega{font-size:clamp(1.65rem, 10.4vw, 2.65rem)}
 }
+
+/* Recruiter pass: quieter frames, red only where it earns attention */
+::selection{background:#ff3b3b; color:#1a0505}
+.card,.tile,.stat,.track a,.engine,.receipt,.kit div,.mapbox,.result,.pill,.pipe > li{box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.engine,.result,.lesson,.final{box-shadow:inset 0 0 0 1px rgba(255,59,59,.55)}
+.pill{background:rgba(8,8,12,.72); backdrop-filter:blur(16px); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.navwrap{background:linear-gradient(#07070c 70%, rgba(7,7,12,0))}
+.pill nav a.hire, .pill nav a.hire.active{color:#1a0505}
+.hero{padding-block:28px 72px}
+.hero .inner{gap:22px}
+.hero .label{color:#ff8d8d}
+.lede{font-size:1.125rem; line-height:1.55}
+.stat{background:rgba(255,255,255,.03)}
+.stat b{color:#fff; letter-spacing:-.03em}
+.track a:hover{background:#2a2228; transform:translateY(-3px)}
+.pipe{align-items:stretch}
+.pipe > li{min-height:100%; background:linear-gradient(180deg, #2a2a36 0%, #1c1c26 100%)}
+.pipe > li .ico{color:#fff; background:#12121a}
+.pipe > li.lit{transform:none; background:#2A1820}
+.pipe > li:last-child{background:#ff3b3b; box-shadow:0 18px 40px rgba(255,59,59,.18)}
+.lesson{background:radial-gradient(420px 180px at 0% 0%, rgba(255,59,59,.18), transparent 60%), #1c1c26}
+.lesson .hand{color:#ff8d8d}
+.lesson q{font-size:clamp(1.7rem, 3vw, 2.15rem); color:#fff}
+.final{border-top:0; background:linear-gradient(180deg, transparent, rgba(255,59,59,.08)); margin-top:48px}
+.email{box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+.btn.sun{color:#1a0505}
+#skip{position:fixed; z-index:90; right:max(16px, env(safe-area-inset-right)); bottom:max(16px, env(safe-area-inset-bottom)); font-family:"Share Tech Mono", ui-monospace, monospace; letter-spacing:.14em; text-transform:uppercase; font-size:.72rem; color:#F4F4F6; background:rgba(8,8,12,.8); border:1px solid rgba(255,255,255,.28); border-radius:999px; padding:8px 14px; cursor:pointer}
+body:not(.building) #skip{display:none}
 </style>
 
 <canvas id="stars" aria-hidden="true"></canvas>
 <div id="boot"><div><div class="orbit" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p>Scanning page</p></div></div>
+<button id="skip" type="button">Skip</button>
 <div id="cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 2 L5 19 L9.2 14.6 L13 21 L15.4 19.8 L11.6 13.4 L18 13.2 Z" fill="#fff" stroke="#111" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
 
 <div class="navwrap">
@@ -633,6 +662,8 @@ body.building .engine.rise{opacity:1; filter:none; transform:none}
     window.addEventListener("touchstart", stopTour, {passive:true});
     window.addEventListener("keydown", stopTour);
     window.addEventListener("pointerdown", function(e){ if(e.isTrusted) stopTour(); });
+    var skip = document.getElementById("skip");
+    if(skip) skip.addEventListener("click", stopTour);
     function moveTo(el){
       if(!el || !touring) return;
       var r = el.getBoundingClientRect();
@@ -647,13 +678,13 @@ body.building .engine.rise{opacity:1; filter:none; transform:none}
         if(off) el.scrollIntoView({behavior:"smooth", block:"nearest"});
         moveTo(el);
         var isMap = el.classList.contains("mapbox");
-        var wait = isMap ? 420 : (off ? 640 : 280);
+        var wait = isMap ? 280 : (off ? 320 : 120);
         setTimeout(function(){
           el.classList.add("built");
           if(isMap) window.dispatchEvent(new Event("mapgo"));
           if(el.classList.contains("reveal")){ cur.classList.add("click"); b.click(); setTimeout(function(){ cur.classList.remove("click"); }, 160); }
           if(el.parentElement && el.parentElement.id === "pipe"){ document.querySelectorAll("#pipe > li").forEach(function(li){ li.classList.remove("lit"); }); el.classList.add("lit"); }
-          setTimeout(res, isMap ? 1600 : 40);
+          setTimeout(res, isMap ? 700 : 30);
         }, wait);
       });
     }
@@ -676,7 +707,7 @@ body.building .engine.rise{opacity:1; filter:none; transform:none}
       cur.classList.add("on");
       pieces.reduce(function(p, el){ return p.then(function(){ return construct(el); }); }, Promise.resolve())
         .then(function(){ if(touring) setTimeout(stopTour, 900); });
-    }, 1400);
+    }, 700);
   }
 
   if(!("IntersectionObserver" in window)) return;
