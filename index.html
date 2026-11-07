@@ -309,6 +309,24 @@ body.building .engine.rise{opacity:1; filter:none; transform:none}
 .btn.sun{color:#1a0505}
 #skip{position:fixed; z-index:90; right:max(16px, env(safe-area-inset-right)); bottom:max(16px, env(safe-area-inset-bottom)); font-family:"Share Tech Mono", ui-monospace, monospace; letter-spacing:.14em; text-transform:uppercase; font-size:.72rem; color:#F4F4F6; background:rgba(8,8,12,.8); border:1px solid rgba(255,255,255,.28); border-radius:999px; padding:8px 14px; cursor:pointer}
 body:not(.building) #skip{display:none}
+.watchnudge{font-family:"Share Tech Mono", ui-monospace, monospace; letter-spacing:.12em; text-transform:uppercase; font-size:.78rem; color:#ff8d8d; text-decoration:none}
+.watchnudge:hover{color:#fff}
+.intro{display:none; padding-block:72px 88px; scroll-margin-top:84px}
+body.tour-done .intro{display:block}
+.intro h2{font-size:clamp(2rem, 5vw, 3.2rem); font-weight:900; letter-spacing:-.03em; color:#fff}
+.poster{position:relative; display:block; width:min(92vw, 380px, calc(76vh * 9 / 16)); aspect-ratio:9/16; margin:22px auto 0; padding:0; border:0; border-radius:22px; overflow:hidden; cursor:pointer; background:#12121a; text-align:left; box-shadow:0 0 0 1px rgba(255,59,59,.85), 0 28px 70px rgba(255,59,59,.18)}
+.poster img, .poster iframe{position:absolute; inset:0; width:100%; height:100%; border:0; background:#12121a; object-fit:cover; object-position:center center}
+.playmark{position:absolute; inset:0; display:grid; place-items:center; align-content:center; gap:12px; background:linear-gradient(180deg, rgba(5,5,9,.12), rgba(5,5,9,.62))}
+.playmark b{width:96px; height:96px; border-radius:50%; background:#ff3b3b; color:#1a0505; display:grid; place-items:center; font-size:1.7rem; animation:tap 1.6s ease-out infinite}
+.playmark span{color:#fff; font-family:"Share Tech Mono", ui-monospace, monospace; letter-spacing:.16em; text-transform:uppercase; font-size:.8rem}
+.poster.playing .playmark, .poster.playing img{display:none}
+@keyframes tap{0%{box-shadow:0 0 0 0 rgba(255,59,59,.55)} 70%{box-shadow:0 0 0 16px rgba(255,59,59,0)} 100%{box-shadow:0 0 0 0 rgba(255,59,59,0)}}
+.sandbox{display:flex; flex-wrap:wrap; gap:12px; align-items:center}
+.sample{display:none; width:100%; background:#fff; color:#1a0505; padding:16px 18px; gap:8px}
+.sample.show{display:grid}
+.sample p{color:#1a0505}
+.hours{font-size:1.15rem; color:#fff}
+.hours b{color:#ff3b3b}
 html{-webkit-text-size-adjust:100%}
 @media (max-width:480px){
   .pill{align-items:stretch}
@@ -337,6 +355,7 @@ html{-webkit-text-size-adjust:100%}
         <a href="#lv1">Lv 1 · Trader</a>
         <a href="#lv2">Lv 2 · Operator</a>
         <a href="#lv3">Lv 3 · Builder</a>
+        <a href="#intro">Intro</a>
         <a href="#lv4" class="hire">Lv 4 · Your team</a>
       </nav>
     </div>
@@ -360,6 +379,7 @@ html{-webkit-text-size-adjust:100%}
       <div class="stat"><b>3x</b><span>outbound reply rate from an engine I built</span></div>
       <div class="stat"><b>6 months</b><span>from data entry to key accounts</span></div>
     </div>
+    <a class="watchnudge" href="#intro">Watch the intro ↓</a>
     <figure class="mapbox">
       <canvas id="map" width="1100" height="460" role="img" aria-label="Map with lines from India to Australia, the United States, the United Kingdom, Canada, Denmark and Singapore"></canvas>
       <span class="hand" aria-hidden="true">where my first customers were ↗</span>
@@ -472,6 +492,15 @@ html{-webkit-text-size-adjust:100%}
           <div class="mail" aria-hidden="true"><span class="row s"></span><span class="row m"></span><span class="row n"></span><span class="ok">✓ Ready for review</span></div>
         </li>
       </ol>
+      <div class="sandbox">
+        <button class="btn sun" id="sim" type="button">Run a sample · a $50M+ mid-cap self-filer</button>
+        <div class="sample" id="sample">
+          <span class="label">Illustration, not a real email</span>
+          <p><strong>To:</strong> the controller named in the filing</p>
+          <p><strong>Subject:</strong> Noticed the latest quarterly filing</p>
+          <p>A first draft tied to that public filing, ready to review before it is sent from HubSpot.</p>
+        </div>
+      </div>
       <div class="result">
         <span class="x" data-count>3x</span>
         <p><strong>Reply rates tripled.</strong> Management approved it as a pilot, and I'm now developing the dashboard with them so the wider team can use it.</p>
@@ -520,6 +549,8 @@ html{-webkit-text-size-adjust:100%}
     <p class="label">Level 4 · Unlocking soon</p>
     <h2 id="lv4h">The next level is <em class="serif">your team.</em></h2>
     <p>I'm looking for a team where I can own accounts or a channel and grow it. Based in India, open to Bangalore, remote and international roles. I already work US hours.</p>
+    <p class="hours">I can meet US teams from <b>5:00 PM to 9:00 PM IST</b>.</p>
+    <p><a class="watchnudge" href="#intro">Watch the intro first ↓</a></p>
     <ul class="roles" aria-label="Roles I'm open to"><li>GTM &amp; Growth</li><li>Customer Success</li><li>Account Executive</li></ul>
     <div class="contact">
       <a class="email" id="email" href="mailto:nairadithya02@gmail.com">nairadithya02@gmail.com</a>
@@ -529,12 +560,41 @@ html{-webkit-text-size-adjust:100%}
     </div>
   </div>
 </section>
+<section class="intro" id="intro" aria-labelledby="introh">
+  <div class="inner">
+    <p class="label">The intro</p>
+    <h2 id="introh">Now <em class="serif">hear it from me.</em></h2>
+    <p>Started selling at 18. Still building. This is the short version.</p>
+    <button class="poster" id="playpitch" type="button" aria-label="Play the intro">
+      <img alt="" referrerpolicy="no-referrer" src="https://drive.google.com/thumbnail?id=1w90QKurE1rBB0xsbWDjIMm-WTtdOlHOc&amp;sz=w1280" onerror="this.style.display='none'">
+      <span class="playmark"><b>▶</b><span>Play my intro</span></span>
+    </button>
+  </div>
+</section>
 <footer><div class="inner">Adithya Nair · GTM, Customer Success and Account Management</div></footer>
 
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var vh = window.innerHeight;
+  var vipMode = false;
+  var play = document.getElementById("playpitch");
+  play.addEventListener("click", function(){
+    if(play.classList.contains("playing")) return;
+    play.classList.add("playing");
+    play.innerHTML = '<iframe src="https://drive.google.com/file/d/1w90QKurE1rBB0xsbWDjIMm-WTtdOlHOc/preview" title="Adithya Nair intro" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+  });
+  var sim = document.getElementById("sim"), sample = document.getElementById("sample");
+  sim.addEventListener("click", function(){
+    var lis = document.querySelectorAll("#pipe > li");
+    sample.classList.remove("show");
+    Array.prototype.forEach.call(lis, function(li){ li.classList.remove("lit"); });
+    for(var i = 0; i < lis.length; i++){ (function(i){ setTimeout(function(){
+      if(i) lis[i-1].classList.remove("lit");
+      lis[i].classList.add("lit");
+      if(i === lis.length - 1) sample.classList.add("show");
+    }, 320 * i); })(i); }
+  });
 
   /* Reveal */
   var r = document.getElementById("redacted"), b = document.getElementById("reveal"), note = document.getElementById("note");
@@ -656,17 +716,18 @@ html{-webkit-text-size-adjust:100%}
   var rt; window.addEventListener("resize", function(){ clearTimeout(rt); rt = setTimeout(function(){ size(); draw(null); }, 120); });
 
   /* The page is built in front of you. A cursor draws each block. Any touch stops it and shows the whole page. */
-  var buildSel = ".pill, .mega, .hero h1, .reveal, .lede, .stat, .mapbox, .track li, .lvhead, .card, .tile, .engine .top, .pipe > li, .result, .illus, .receipt, .kit div, .final .label, .final h2, .final .inner > p, .roles, .contact";
+  var buildSel = ".pill, .hero .label, .mega, .hero h1, .reveal, .lede, .mapbox, .track li, .lvhead, .card, .tile, .engine .top, .pipe > li, .result, .illus, .receipt, .kit div, .final .label, .final h2, .final .inner > p, .roles, .contact";
   var pieces = Array.prototype.slice.call(document.querySelectorAll(buildSel));
   function showBuilt(){
     document.body.classList.remove("building");
+    document.body.classList.add("tour-done");
     pieces.forEach(function(el){ el.classList.add("built", "in"); });
     var steps = document.querySelectorAll(".pipe > li");
     if(steps.length) steps[steps.length - 1].classList.add("lit");
     window.dispatchEvent(new Event("mapgo"));
   }
-  if(reduce){ document.getElementById("boot").classList.add("out"); showBuilt(); }
-  if(!reduce){
+  if(reduce || vipMode){ document.getElementById("boot").classList.add("out"); showBuilt(); }
+  if(!reduce && !vipMode){
     document.body.classList.add("building");
     pieces.forEach(function(el){ el.classList.add("build"); });
     var boot = document.getElementById("boot"), cur = document.getElementById("cursor"), touring = true;
