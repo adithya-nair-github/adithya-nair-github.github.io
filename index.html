@@ -309,6 +309,19 @@ body.building .engine.rise{opacity:1; filter:none; transform:none}
 .btn.sun{color:#1a0505}
 #skip{position:fixed; z-index:90; right:max(16px, env(safe-area-inset-right)); bottom:max(16px, env(safe-area-inset-bottom)); font-family:"Share Tech Mono", ui-monospace, monospace; letter-spacing:.14em; text-transform:uppercase; font-size:.72rem; color:#F4F4F6; background:rgba(8,8,12,.8); border:1px solid rgba(255,255,255,.28); border-radius:999px; padding:8px 14px; cursor:pointer}
 body:not(.building) #skip{display:none}
+html{-webkit-text-size-adjust:100%}
+@media (max-width:480px){
+  .pill{align-items:stretch}
+  .pill .who, .pill nav a.hire{min-height:44px; display:inline-flex; align-items:center}
+  .btn, .email{min-height:48px}
+  .contact{display:grid; width:100%}
+  .contact .email, .contact .btn{width:100%; justify-content:center}
+  .hero{padding-block:16px 40px}
+  .hero h1{font-size:clamp(2rem, 9vw, 2.6rem)}
+  .chips li, .signals span{font-size:.82rem; padding:6px 10px}
+  .engine, .card, .tile{padding:16px}
+  .label{letter-spacing:.04em}
+}
 </style>
 
 <canvas id="stars" aria-hidden="true"></canvas>
