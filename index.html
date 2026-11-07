@@ -227,7 +227,7 @@ footer{color:var(--on-2); font-size:var(--s-1); padding-block:0 32px}
 body{background:radial-gradient(1200px 700px at 50% -10%, #1a0c12 0%, #07070c 55%)}
 body::before{background:#07070c}
 .label,.lvtag .when,.flowline,.illus{font-family:"Share Tech Mono", ui-monospace, monospace; letter-spacing:.08em}
-.mega{margin:0; font-family:var(--font-display); font-weight:900; font-stretch:125%; font-size:clamp(3.4rem, 14vw, 8.4rem); line-height:.8; letter-spacing:-.04em; color:transparent; -webkit-text-stroke:2px var(--sun); text-stroke:2px var(--sun)}
+.mega{margin:0; font-family:var(--font-display); font-weight:900; font-stretch:125%; font-size:clamp(3.4rem, 14vw, 8.4rem); line-height:.8; letter-spacing:-.04em; color:transparent; -webkit-text-stroke:2px var(--sun); text-stroke:2px var(--sun); max-width:100%}
 .card,.tile,.stat,.track a,.engine,.receipt,.kit div,.mapbox,.result,.pill,.pipe > li{border-radius:2px; box-shadow:inset 0 0 0 1.5px rgba(255,90,90,.72)}
 .track a:hover{background:#2a2228}
 .card h3,.tile .big,.pipe h4,.stat b,.lvhead h2,.engine .top h3{color:#fff}
@@ -249,7 +249,7 @@ body::before{background:#07070c}
 .rise{opacity:0; filter:blur(8px); transform:translateY(40px); transition:opacity .8s ease, filter .8s ease, transform .9s cubic-bezier(.16,.8,.2,1)}
 .rise.in{opacity:1; filter:none; transform:none}
 
-#stars{position:fixed; inset:0; z-index:0; pointer-events:none}
+#stars{position:fixed; inset:0; z-index:0; width:100%; height:100%; pointer-events:none}
 .navwrap,.hero,.track,.level,.final,footer{position:relative; z-index:1}
 
 #boot{position:fixed; inset:0; z-index:80; display:grid; place-items:center; background:#050509; transition:opacity .7s ease, visibility .7s ease}
@@ -275,6 +275,11 @@ body.building .build{opacity:0; clip-path:inset(0 100% 0 0)}
 body.building .build.built{opacity:1; clip-path:inset(0 0 0 0); transition:clip-path .55s cubic-bezier(.16,.8,.2,1), opacity .35s ease}
 body.building .rise{opacity:0; filter:none; transform:none}
 body.building .build.built.rise{opacity:1}
+.hero .inner{container-type:inline-size}
+.hero .inner > *{min-width:0}
+@media (max-width:520px){
+  .mega{font-size:clamp(1.65rem, 10.4vw, 2.65rem)}
+}
 </style>
 
 <canvas id="stars" aria-hidden="true"></canvas>
@@ -654,7 +659,7 @@ body.building .build.built.rise{opacity:1}
     var stars = document.getElementById("stars"), sctx = stars.getContext("2d");
     var dots = [];
     function starSize(){
-      stars.width = innerWidth; stars.height = innerHeight;
+      stars.width = document.documentElement.clientWidth; stars.height = document.documentElement.clientHeight;
       if(!dots.length){ for(var i = 0; i < 80; i++) dots.push({x:Math.random(), y:Math.random(), r:Math.random()*1.3+.2, v:(Math.random()*.15+.02)}); }
     }
     function starDraw(){
